@@ -54,7 +54,7 @@ def show_data():
                 
                 
     
-    j=0;
+    j=0; 
     List =[NONE]*10
     for element in sorted_similar_movies:
             
