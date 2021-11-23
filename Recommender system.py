@@ -3,6 +3,8 @@ import pandas as pd
 
 df=pd.read_csv("movies.csv")
 df.columns
+
+
 features=['keywords','cast','genres','director','original_title']
 for feature in features:
     df[feature] = df[feature].fillna('')
@@ -13,6 +15,7 @@ def combine_features(row):
         return row['keywords']+" "+row['cast']+" "+row["genres"]+" "+row["director"]+" "+row['original_title']
     except:
         print ("Error:", row)
+
 
 df["combined_features"] = df.apply(combine_features,axis=1)
 
@@ -38,6 +41,7 @@ from tkinter import *
    
 def show_data():
     txt.delete(0.0, 'end')
+    # to not repeat the output
     movie =ent.get()
     movie_referred =movie        
     movie_index = get_index_from_title(movie_referred)
@@ -49,9 +53,9 @@ def show_data():
     sorted_similar_movies = sorted(Similar_movies,key = lambda x:x[1], reverse = True)
                 
                 
-    i=0;
+    
     j=0;
-    List =[None]*10
+    List =[NONE]*10
     for element in sorted_similar_movies:
             
             
@@ -60,8 +64,7 @@ def show_data():
             j=j+1;
             
     
-            i=i+1;
-            if i>=10:
+            if j>=10:
                 break
             
             
